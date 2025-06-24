@@ -1,0 +1,14 @@
+name: Pull Request validation
+
+on: [pull_request]
+
+
+jobs:
+  fractional-realestate-ts-contracts-ci:
+    name: Run fractional-realestate-ts-contracts validation
+    uses: ./.github/workflows/fractional-realestate-ts-contracts-ci.yaml
+
+  fractional-realestate-ts-frontend-ci:
+    name: Run fractional-realestate-ts-frontend validation
+    uses: ./.github/workflows/fractional-realestate-ts-frontend-ci.yaml
+

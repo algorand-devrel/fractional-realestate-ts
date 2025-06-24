@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 2.1.4
+_src_path: gh:algorandfoundation/algokit-fullstack-template
+author_email: gabrielkuettel@gmail.com
+author_name: Gabriel Kuettel
+cloud_provider: vercel
+contract_name: hello_world
+preset_name: production
+project_name: fractional-realestate-ts
+

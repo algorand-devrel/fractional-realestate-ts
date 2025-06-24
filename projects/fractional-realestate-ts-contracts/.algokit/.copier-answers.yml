@@ -1,0 +1,9 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 0.3.2
+_src_path: gh:algorandfoundation/algokit-typescript-template
+author_email: gabrielkuettel@gmail.com
+author_name: Gabriel Kuettel
+contract_name: hello_world
+preset_name: production
+project_name: fractional-realestate-ts-contracts
+
