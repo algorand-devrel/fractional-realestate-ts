@@ -1,4 +1,4 @@
-import { AlgoViteClientConfig, AlgoViteKMDConfig } from '../../interfaces/network'
+import { AlgoViteClientConfig, AlgoViteKMDConfig } from '../interfaces/network'
 
 export function getAlgodConfigFromViteEnvironment(): AlgoViteClientConfig {
   if (!import.meta.env.VITE_ALGOD_SERVER) {
@@ -37,5 +37,18 @@ export function getKmdConfigFromViteEnvironment(): AlgoViteKMDConfig {
     token: import.meta.env.VITE_KMD_TOKEN,
     wallet: import.meta.env.VITE_KMD_WALLET,
     password: import.meta.env.VITE_KMD_PASSWORD,
+  }
+}
+
+export function getAppIdFromViteEnvironment(): bigint {
+  const appIdStr = import.meta.env.VITE_APP_ID
+  if (!appIdStr) {
+    throw new Error('Attempt to get app ID without specifying VITE_APP_ID in the environment variables')
+  }
+  // Ensure the value is a valid bigint
+  try {
+    return BigInt(appIdStr)
+  } catch {
+    throw new Error('VITE_APP_ID must be a valid integer string')
   }
 }

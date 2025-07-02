@@ -1,12 +1,15 @@
 import { SupportedWallet, WalletId, WalletManager, WalletProvider } from '@txnlab/use-wallet-react'
 import { SnackbarProvider } from 'notistack'
 import Home from './Home'
-import { getAlgodConfigFromViteEnvironment, getKmdConfigFromViteEnvironment } from './utils/network/getAlgoClientConfigs'
+import { getAlgodConfigFromViteEnvironment, getKmdConfigFromViteEnvironment } from './utils/getAlgorandConfigs'
+import { AppClientProvider } from './context/AppClientContext'
 
 let supportedWallets: SupportedWallet[]
+
 if (import.meta.env.VITE_ALGOD_NETWORK === 'localnet') {
   const kmdConfig = getKmdConfigFromViteEnvironment()
   supportedWallets = [
+    { id: WalletId.LUTE },
     {
       id: WalletId.KMD,
       options: {
@@ -49,7 +52,9 @@ export default function App() {
   return (
     <SnackbarProvider maxSnack={3}>
       <WalletProvider manager={walletManager}>
-        <Home />
+        <AppClientProvider>
+          <Home />
+        </AppClientProvider>
       </WalletProvider>
     </SnackbarProvider>
   )

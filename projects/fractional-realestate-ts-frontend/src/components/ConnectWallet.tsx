@@ -58,7 +58,7 @@ const ConnectWallet = ({ openModal, closeModal }: ConnectWalletInterface) => {
           </button>
           {activeAddress && (
             <button
-              className="btn btn-warning"
+              className="btn btn-primary"
               data-test-id="logout"
               onClick={async () => {
                 if (wallets) {

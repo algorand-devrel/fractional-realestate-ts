@@ -1,0 +1,499 @@
+#pragma version 10
+#pragma typetrack false
+
+// @algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram() -> uint64:
+main:
+    intcblock 0 1 32
+    bytecblock 0x151f7c75 "properties" 0x0042
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:53
+    // export default class FractionalRealEstate extends Contract {
+    txn NumAppArgs
+    bz main_bare_routing@8
+    pushbytess 0xec1b0fad 0x0a3de51c 0xf3ce5184 // method "createPropertyListing(string,uint64,uint64)uint64", method "purchaseFromLister(uint64,uint64,pay)bool", method "getPropertyInfo(uint64)(string,uint64,uint64,uint64,uint64,address)"
+    txna ApplicationArgs 0
+    match main_createPropertyListing_route@3 main_purchaseFromLister_route@4 main_getPropertyInfo_route@5
+
+main_after_if_else@12:
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:53
+    // export default class FractionalRealEstate extends Contract {
+    intc_0 // 0
+    return
+
+main_getPropertyInfo_route@5:
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:217
+    // @abimethod({ readonly: true })
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:53
+    // export default class FractionalRealEstate extends Contract {
+    txna ApplicationArgs 1
+    btoi
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:217
+    // @abimethod({ readonly: true })
+    callsub getPropertyInfo
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_purchaseFromLister_route@4:
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:130
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:53
+    // export default class FractionalRealEstate extends Contract {
+    txna ApplicationArgs 1
+    btoi
+    txna ApplicationArgs 2
+    btoi
+    txn GroupIndex
+    intc_1 // 1
+    -
+    dup
+    gtxns TypeEnum
+    intc_1 // pay
+    ==
+    assert // transaction type is pay
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:130
+    // @abimethod()
+    callsub purchaseFromLister
+    pushbytes 0x00
+    intc_0 // 0
+    uncover 2
+    setbit
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_createPropertyListing_route@3:
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:72
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:53
+    // export default class FractionalRealEstate extends Contract {
+    txna ApplicationArgs 1
+    extract 2 0
+    txna ApplicationArgs 2
+    btoi
+    txna ApplicationArgs 3
+    btoi
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:72
+    // @abimethod()
+    callsub createPropertyListing
+    itob
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_bare_routing@8:
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:53
+    // export default class FractionalRealEstate extends Contract {
+    txn OnCompletion
+    bnz main_after_if_else@12
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_1 // 1
+    return
+
+
+// smart_contracts/FractionalRealEstate/contract.algo.ts::FractionalRealEstate.createPropertyListing(propertyAddress: bytes, shares: uint64, pricePerShare: uint64) -> uint64:
+createPropertyListing:
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:72-73
+    // @abimethod()
+    // public createPropertyListing(propertyAddress: string, shares: uint64, pricePerShare: uint64): uint64 {
+    proto 3 1
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:102-112
+    // const txnResult = itxn
+    //   .assetConfig({
+    //     assetName: Bytes(propertyAddress).slice(0, 32).toString(),
+    //     unitName: 'PROP',
+    //     total: shares,
+    //     decimals: 0,
+    //     manager: Global.currentApplicationAddress,
+    //     reserve: Global.currentApplicationAddress,
+    //     fee: 0,
+    //   })
+    //   .submit()
+    itxn_begin
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:104
+    // assetName: Bytes(propertyAddress).slice(0, 32).toString(),
+    frame_dig -3
+    len
+    intc_0 // 0
+    dig 1
+    >=
+    intc_0 // 0
+    dig 2
+    uncover 2
+    select
+    intc_2 // 32
+    dig 2
+    >=
+    intc_2 // 32
+    dig 3
+    uncover 2
+    select
+    frame_dig -3
+    cover 2
+    substring3
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:108
+    // manager: Global.currentApplicationAddress,
+    global CurrentApplicationAddress
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:109
+    // reserve: Global.currentApplicationAddress,
+    dup
+    itxn_field ConfigAssetReserve
+    itxn_field ConfigAssetManager
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:107
+    // decimals: 0,
+    intc_0 // 0
+    itxn_field ConfigAssetDecimals
+    frame_dig -2
+    itxn_field ConfigAssetTotal
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:105
+    // unitName: 'PROP',
+    pushbytes "PROP"
+    itxn_field ConfigAssetUnitName
+    itxn_field ConfigAssetName
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:102-111
+    // const txnResult = itxn
+    //   .assetConfig({
+    //     assetName: Bytes(propertyAddress).slice(0, 32).toString(),
+    //     unitName: 'PROP',
+    //     total: shares,
+    //     decimals: 0,
+    //     manager: Global.currentApplicationAddress,
+    //     reserve: Global.currentApplicationAddress,
+    //     fee: 0,
+    //   })
+    pushint 3 // 3
+    itxn_field TypeEnum
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:110
+    // fee: 0,
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:102-112
+    // const txnResult = itxn
+    //   .assetConfig({
+    //     assetName: Bytes(propertyAddress).slice(0, 32).toString(),
+    //     unitName: 'PROP',
+    //     total: shares,
+    //     decimals: 0,
+    //     manager: Global.currentApplicationAddress,
+    //     reserve: Global.currentApplicationAddress,
+    //     fee: 0,
+    //   })
+    //   .submit()
+    itxn_submit
+    itxn CreatedAssetID
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:79
+    // address: new arc4.Str(propertyAddress),
+    swap
+    itob
+    extract 6 2
+    frame_dig -3
+    concat
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:80
+    // totalShares: new arc4.UintN64(shares),
+    frame_dig -2
+    itob
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:82
+    // pricePerShare: new arc4.UintN64(pricePerShare),
+    frame_dig -1
+    itob
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:83
+    // propertyAssetId: new arc4.UintN64(assetId),
+    dig 3
+    itob
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:84
+    // ownerAddress: new arc4.Address(Txn.sender),
+    txn Sender
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:78-85
+    // const propertyStruct = new PropertyStruct({
+    //   address: new arc4.Str(propertyAddress),
+    //   totalShares: new arc4.UintN64(shares),
+    //   availableShares: new arc4.UintN64(shares),
+    //   pricePerShare: new arc4.UintN64(pricePerShare),
+    //   propertyAssetId: new arc4.UintN64(assetId),
+    //   ownerAddress: new arc4.Address(Txn.sender),
+    // })
+    bytec_2 // 0x0042
+    dig 4
+    concat
+    uncover 4
+    concat
+    uncover 3
+    concat
+    dig 2
+    concat
+    swap
+    concat
+    uncover 2
+    concat
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:57
+    // public listedProperties = BoxMap<uint64, PropertyStruct>({ keyPrefix: 'properties' })
+    bytec_1 // "properties"
+    uncover 2
+    concat
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:88
+    // this.listedProperties(assetId).value = propertyStruct.copy()
+    dup
+    box_del
+    pop
+    swap
+    box_put
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:90
+    // return assetId
+    retsub
+
+
+// smart_contracts/FractionalRealEstate/contract.algo.ts::FractionalRealEstate.purchaseFromLister(propertyId: uint64, shares: uint64, payment: uint64) -> uint64:
+purchaseFromLister:
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:130-131
+    // @abimethod()
+    // public purchaseFromLister(propertyId: uint64, shares: uint64, payment: gtxn.PaymentTxn): boolean {
+    proto 3 1
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:133
+    // assert(this.listedProperties(propertyId).exists, 'Property not listed')
+    frame_dig -3
+    itob
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:57
+    // public listedProperties = BoxMap<uint64, PropertyStruct>({ keyPrefix: 'properties' })
+    bytec_1 // "properties"
+    swap
+    concat
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:133
+    // assert(this.listedProperties(propertyId).exists, 'Property not listed')
+    dup
+    box_len
+    bury 1
+    assert // Property not listed
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:134
+    // const property = this.listedProperties(propertyId).value.copy()
+    dup
+    box_get
+    assert // Box must have value
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:137
+    // assert(payment.amount === shares * property.pricePerShare.native, 'Invalid payment amount')
+    frame_dig -1
+    gtxns Amount
+    dig 1
+    pushint 18 // 18
+    extract_uint64
+    frame_dig -2
+    *
+    dig 1
+    ==
+    assert // Invalid payment amount
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:139
+    // assert(payment.receiver === Global.currentApplicationAddress, 'Invalid payment receiver')
+    frame_dig -1
+    gtxns Receiver
+    global CurrentApplicationAddress
+    ==
+    assert // Invalid payment receiver
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:141
+    // assert(payment.sender === Txn.sender, 'Invalid payment sender')
+    frame_dig -1
+    gtxns Sender
+    txn Sender
+    ==
+    assert // Invalid payment sender
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:143
+    // assert(shares <= property.availableShares.native, 'Not enough shares')
+    dig 1
+    pushint 10 // 10
+    extract_uint64
+    frame_dig -2
+    dig 1
+    <=
+    assert // Not enough shares
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:146
+    // const asset = Asset(property.propertyAssetId.native)
+    dig 2
+    pushint 26 // 26
+    extract_uint64
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:166-173
+    // itxn
+    //   .assetTransfer({
+    //     xferAsset: asset,
+    //     assetReceiver: Txn.sender, // Buyer
+    //     assetAmount: shares,
+    //     fee: 0,
+    //   })
+    //   .submit()
+    itxn_begin
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:169
+    // assetReceiver: Txn.sender, // Buyer
+    txn Sender
+    frame_dig -2
+    itxn_field AssetAmount
+    itxn_field AssetReceiver
+    itxn_field XferAsset
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:166-172
+    // itxn
+    //   .assetTransfer({
+    //     xferAsset: asset,
+    //     assetReceiver: Txn.sender, // Buyer
+    //     assetAmount: shares,
+    //     fee: 0,
+    //   })
+    pushint 4 // 4
+    itxn_field TypeEnum
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:171
+    // fee: 0,
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:166-173
+    // itxn
+    //   .assetTransfer({
+    //     xferAsset: asset,
+    //     assetReceiver: Txn.sender, // Buyer
+    //     assetAmount: shares,
+    //     fee: 0,
+    //   })
+    //   .submit()
+    itxn_submit
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:150
+    // this.payPropertyOwner(payment.amount, property.ownerAddress)
+    uncover 2
+    extract 34 32 // on error: Index access is out of bounds
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:184-190
+    // itxn
+    //   .payment({
+    //     amount,
+    //     receiver: ownerAddress.bytes,
+    //     fee: 0,
+    //   })
+    //   .submit()
+    itxn_begin
+    itxn_field Receiver
+    swap
+    itxn_field Amount
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:184-189
+    // itxn
+    //   .payment({
+    //     amount,
+    //     receiver: ownerAddress.bytes,
+    //     fee: 0,
+    //   })
+    intc_1 // 1
+    itxn_field TypeEnum
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:188
+    // fee: 0,
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:184-190
+    // itxn
+    //   .payment({
+    //     amount,
+    //     receiver: ownerAddress.bytes,
+    //     fee: 0,
+    //   })
+    //   .submit()
+    itxn_submit
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:153
+    // this.updateAvailableShares(propertyId, property.availableShares.native - shares)
+    frame_dig -2
+    -
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:202
+    // const propertyStruct = this.listedProperties(propertyId).value.copy()
+    dig 1
+    box_get
+    assert // Box must have value
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:205
+    // availableShares: new arc4.UintN64(newAvailableShares),
+    swap
+    itob
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:203-206
+    // const updatedStruct = new PropertyStruct({
+    //   ...propertyStruct,
+    //   availableShares: new arc4.UintN64(newAvailableShares),
+    // })
+    dig 1
+    intc_0 // 0
+    extract_uint16
+    dig 2
+    len
+    dig 3
+    cover 2
+    substring3
+    dig 2
+    extract 2 8 // on error: Index access is out of bounds
+    dig 3
+    extract 18 8 // on error: Index access is out of bounds
+    dig 4
+    extract 26 8 // on error: Index access is out of bounds
+    uncover 5
+    extract 34 32 // on error: Index access is out of bounds
+    bytec_2 // 0x0042
+    uncover 4
+    concat
+    uncover 5
+    concat
+    uncover 3
+    concat
+    uncover 2
+    concat
+    swap
+    concat
+    swap
+    concat
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:208
+    // this.listedProperties(propertyId).value = updatedStruct.copy()
+    dig 1
+    box_del
+    pop
+    box_put
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:155
+    // return true
+    intc_1 // 1
+    retsub
+
+
+// smart_contracts/FractionalRealEstate/contract.algo.ts::FractionalRealEstate.getPropertyInfo(propertyId: uint64) -> bytes:
+getPropertyInfo:
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:217-218
+    // @abimethod({ readonly: true })
+    // public getPropertyInfo(propertyId: uint64): PropertyStruct {
+    proto 1 1
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:219
+    // assert(this.listedProperties(propertyId).exists, 'Property not listed')
+    frame_dig -1
+    itob
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:57
+    // public listedProperties = BoxMap<uint64, PropertyStruct>({ keyPrefix: 'properties' })
+    bytec_1 // "properties"
+    swap
+    concat
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:219
+    // assert(this.listedProperties(propertyId).exists, 'Property not listed')
+    dup
+    box_len
+    bury 1
+    assert // Property not listed
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:221
+    // return this.listedProperties(propertyId).value
+    box_get
+    assert // Box must have value
+    retsub
