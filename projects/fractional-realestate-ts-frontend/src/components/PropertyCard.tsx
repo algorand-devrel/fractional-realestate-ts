@@ -68,39 +68,77 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
       </dl>
       <div className="px-6 pb-4 mt-auto">
         {activeAddress && property.ownerAddress !== activeAddress ? (
-          <div className="flex flex-col gap-2 items-end w-full">
-            <label className="text-xs text-gray-600 mb-1 self-start" htmlFor={`buy-shares-${propertyId}`}>
-              Shares to Buy
+          <div className="w-full bg-gray-50 rounded-lg p-4 flex flex-col gap-2 border border-gray-100">
+            <label className="text-xs font-semibold text-gray-700 mb-1" htmlFor={`buy-shares-${propertyId}`}>
+              Buy a share for {Number(property.pricePerShare) / 1000000} Algo
             </label>
             <div className="flex gap-2 w-full items-center">
               <input
                 id={`buy-shares-${propertyId}`}
-                className="input input-bordered input-xs w-20"
+                className="block w-24 rounded-md border border-gray-300 bg-white px-2 py-1 text-sm shadow-sm focus:border-teal-500 focus:ring-1 focus:ring-teal-500 disabled:bg-gray-100 disabled:cursor-not-allowed transition"
                 type="number"
                 min={1}
                 max={property.availableShares.toString()}
                 value={localBuyAmount}
                 onChange={(e) => setLocalBuyAmount(e.target.value)}
                 disabled={isBuying}
+                placeholder="Amount"
               />
               <button
-                className="btn btn-xs btn-success"
+                className="inline-flex items-center gap-1 rounded-md bg-teal-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-teal-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 disabled:bg-teal-200 disabled:cursor-not-allowed transition"
                 disabled={isBuying || !isValid}
                 onClick={() => {
                   handleBuyShares(propertyId, BigInt(property.pricePerShare), property.ownerAddress, localBuyAmount)
                 }}
               >
+                {isBuying ? (
+                  <svg className="animate-spin h-4 w-4 mr-1 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                  </svg>
+                ) : null}
                 {isBuying ? 'Buying...' : 'Buy Shares'}
               </button>
             </div>
             {!isValid && (
-              <div className="text-red-500 text-xs self-start">Enter a valid amount (1 - {property.availableShares.toString()})</div>
+              <div className="flex items-center gap-1 text-red-500 text-xs mt-1">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v2m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"
+                  />
+                </svg>
+                Enter a valid amount (1 - {property.availableShares.toString()})
+              </div>
             )}
-            {buyError && buyingPropertyId === propertyId && <div className="text-red-500 text-xs self-start">{buyError}</div>}
-            {buySuccess && buyingPropertyId === propertyId && <div className="text-green-600 text-xs self-start">{buySuccess}</div>}
+            {buyError && buyingPropertyId === propertyId && (
+              <div className="flex items-center gap-1 text-red-500 text-xs mt-1">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v2m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"
+                  />
+                </svg>
+                {buyError}
+              </div>
+            )}
+            {buySuccess && !buyError && isValid && (
+              <div className="flex items-center gap-1 text-green-600 text-xs mt-1">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {buySuccess}
+              </div>
+            )}
           </div>
         ) : property.ownerAddress === activeAddress ? (
-          <span className="text-xs text-gray-500">You own this</span>
+          <div className="flex justify-center">
+            <div className="bg-gray-50 rounded-lg px-4 py-2 text-xs text-gray-700 font-medium border border-gray-100">
+              You own this property
+            </div>
+          </div>
         ) : (
           <span className="text-xs text-gray-400">Connect wallet</span>
         )}
