@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
-import { useAppClient } from './context/AppClientContext'
-import Navbar from './components/Navbar'
 import { useWallet } from '@txnlab/use-wallet-react'
-import ListPropertyForm from './components/ListPropertyForm'
-import PropertyGrid from './components/PropertyGrid'
-import { useProperties } from './hooks/useProperties'
-import { useListProperty } from './hooks/useListProperty'
-import { useBuyShares } from './hooks/useBuyShares'
+import React, { useEffect } from 'react'
 import HeroSection from './components/HeroSection'
+import ListPropertyForm from './components/ListPropertyForm'
+import Navbar from './components/Navbar'
+import PropertyGrid from './components/PropertyGrid'
+import OwnedPropertyGrid from './components/OwnedPropertyGrid'
+import { useAppClient } from './context/AppClientContext'
+import { useBuyShares } from './hooks/useBuyShares'
+import { useListProperty } from './hooks/useListProperty'
+import { useOwnedProperties } from './hooks/useOwnedProperties'
+import { useProperties } from './hooks/useProperties'
 
 interface HomeProps {}
 
@@ -20,11 +22,13 @@ const Home: React.FC<HomeProps> = () => {
   const { properties, loading: propertiesLoading, error: propertiesError, refresh: refreshProperties } = useProperties(appClient)
   const { listProperty, loading: listingLoading, error: listingError, success: listingSuccess } = useListProperty(appClient, activeAddress)
   const { buyShares, loading: buyLoading, error: buyError, success: buySuccess, buyingPropertyId } = useBuyShares(appClient, activeAddress)
+  const { ownedProperties, loading: ownedLoading, error: ownedError, refresh: refreshOwned } = useOwnedProperties(appClient, activeAddress)
 
   // --- Refresh properties when a property is listed or shares are bought ---
   useEffect(() => {
     refreshProperties()
-  }, [appClient, listingSuccess, buySuccess, refreshProperties])
+    refreshOwned()
+  }, [appClient, listingSuccess, buySuccess, activeAddress, refreshProperties, refreshOwned])
 
   // --- Handle property listing form submit ---
   const handleListProperty = async (propertyAddress: string, shares: string, pricePerShare: string) => {
@@ -72,6 +76,13 @@ const Home: React.FC<HomeProps> = () => {
               handleBuyShares={buyShares}
             />
           )}
+        </div>
+      </div>
+      {/* --- Owned Properties Section --- */}
+      <div className="mx-auto max-w-7xl w-full px-6 pb-16">
+        <div className="rounded-xl shadow-md p-6 bg-white">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Properties You Own Shares In</h2>
+          <OwnedPropertyGrid ownedProperties={ownedProperties} loading={ownedLoading} error={ownedError} />
         </div>
       </div>
     </div>
