@@ -43,8 +43,15 @@ export function useBuyShares(appClient: FractionalRealEstateClient | null, activ
    * @param pricePerShare The price per share in microAlgos
    * @param ownerAddress The address of the property owner
    * @param buyAmount The number of shares to buy (string)
+   * @param onTx (optional) callback to receive the transaction ID
    */
-  const buyShares = async (propertyId: bigint, pricePerShare: bigint, ownerAddress: string, buyAmount: string) => {
+  const buyShares = async (
+    propertyId: bigint,
+    pricePerShare: bigint,
+    ownerAddress: string,
+    buyAmount: string,
+    onTx?: (txId?: string) => void,
+  ) => {
     if (!appClient) {
       setError('App is not ready. Please try again in a moment.')
       return
@@ -98,11 +105,18 @@ export function useBuyShares(appClient: FractionalRealEstateClient | null, activ
       const result = await group.send()
       if (result.returns[0]) {
         setSuccess('Shares purchased!')
+        if (onTx && result.txIds && result.txIds.length > 0) {
+          onTx(result.txIds[0])
+        } else if (onTx) {
+          onTx(undefined)
+        }
       } else {
         setError('Purchase failed')
+        if (onTx) onTx(undefined)
       }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to buy shares')
+      if (onTx) onTx(undefined)
     } finally {
       setLoading(false)
       setBuyingPropertyId(null)

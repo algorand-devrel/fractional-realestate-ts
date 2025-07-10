@@ -333,19 +333,19 @@ purchaseFromLister:
     dig 2
     pushint 26 // 26
     extract_uint64
+    // smart_contracts/FractionalRealEstate/contract.algo.ts:147
+    // this.transferSharesToBuyer(Txn.sender, asset, shares)
+    txn Sender
     // smart_contracts/FractionalRealEstate/contract.algo.ts:166-173
     // itxn
     //   .assetTransfer({
     //     xferAsset: asset,
-    //     assetReceiver: Txn.sender, // Buyer
+    //     assetReceiver: receiver, // Buyer
     //     assetAmount: shares,
     //     fee: 0,
     //   })
     //   .submit()
     itxn_begin
-    // smart_contracts/FractionalRealEstate/contract.algo.ts:169
-    // assetReceiver: Txn.sender, // Buyer
-    txn Sender
     frame_dig -2
     itxn_field AssetAmount
     itxn_field AssetReceiver
@@ -354,7 +354,7 @@ purchaseFromLister:
     // itxn
     //   .assetTransfer({
     //     xferAsset: asset,
-    //     assetReceiver: Txn.sender, // Buyer
+    //     assetReceiver: receiver, // Buyer
     //     assetAmount: shares,
     //     fee: 0,
     //   })
@@ -368,7 +368,7 @@ purchaseFromLister:
     // itxn
     //   .assetTransfer({
     //     xferAsset: asset,
-    //     assetReceiver: Txn.sender, // Buyer
+    //     assetReceiver: receiver, // Buyer
     //     assetAmount: shares,
     //     fee: 0,
     //   })

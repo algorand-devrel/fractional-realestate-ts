@@ -10,6 +10,7 @@ import { useBuyShares } from './hooks/useBuyShares'
 import { useListProperty } from './hooks/useListProperty'
 import { useOwnedProperties } from './hooks/useOwnedProperties'
 import { useProperties } from './hooks/useProperties'
+import { useSnackbar } from 'notistack'
 
 interface HomeProps {}
 
@@ -17,6 +18,7 @@ const Home: React.FC<HomeProps> = () => {
   // --- Hooks for Algorand contract and wallet ---
   const { appClient } = useAppClient()
   const { activeAddress } = useWallet()
+  const { enqueueSnackbar } = useSnackbar()
 
   // --- Hooks for contract logic ---
   const { properties, loading: propertiesLoading, error: propertiesError, refresh: refreshProperties } = useProperties(appClient)
@@ -32,7 +34,46 @@ const Home: React.FC<HomeProps> = () => {
 
   // --- Handle property listing form submit ---
   const handleListProperty = async (propertyAddress: string, shares: string, pricePerShare: string) => {
-    await listProperty(propertyAddress, shares, pricePerShare)
+    await listProperty(propertyAddress, shares, pricePerShare, (txId?: string) => {
+      if (txId) {
+        enqueueSnackbar(
+          <span>
+            Property listed! TX:{' '}
+            <a
+              href={`https://lora.algokit.io/localnet/transaction/${txId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-blue-600"
+            >
+              {txId}
+            </a>
+          </span>,
+          { variant: 'success' },
+        )
+      }
+    })
+  }
+
+  // --- Handle buy shares callback ---
+  const handleBuyShares = async (propertyId: bigint, pricePerShare: bigint, ownerAddress: string, buyAmount: string) => {
+    await buyShares(propertyId, pricePerShare, ownerAddress, buyAmount, (txId?: string) => {
+      if (txId) {
+        enqueueSnackbar(
+          <span>
+            Shares purchased! TX:{' '}
+            <a
+              href={`https://lora.algokit.io/localnet/transaction/${txId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-blue-600"
+            >
+              {txId}
+            </a>
+          </span>,
+          { variant: 'success' },
+        )
+      }
+    })
   }
 
   return (
@@ -73,7 +114,7 @@ const Home: React.FC<HomeProps> = () => {
               buyLoading={buyLoading}
               buyError={buyError}
               buySuccess={buySuccess}
-              handleBuyShares={buyShares}
+              handleBuyShares={handleBuyShares}
             />
           )}
         </div>

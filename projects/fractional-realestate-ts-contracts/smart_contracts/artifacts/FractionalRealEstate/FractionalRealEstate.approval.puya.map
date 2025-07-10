@@ -3,7 +3,7 @@
   "sources": [
     "/Users/gabe.algo/Code/fractional-realestate-ts/projects/fractional-realestate-ts-contracts/smart_contracts/FractionalRealEstate/contract.algo.ts"
   ],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;AAoDA;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;AAAA;;AAoKG;;AAAA;AAAA;AAAA;;AAAA;AApKH;;;AAAA;AAoKG;;;AAAA;AAAA;AAAA;AAAA;AAAA;;AAvFA;;AAAA;AAAA;AAAA;;AAAA;AA7EH;;;AAAA;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AA6EG;;;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AA1DA;;AAAA;AAAA;AAAA;;AAAA;AAnBH;;;AAAA;;;AAAA;;;AAAA;AAAA;;;AAAA;AAmBG;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAnBH;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAmBE;;;AA8BoB;AAEH;;AAAA;AAA6B;AAA7B;;AAAA;AAA6B;AAA7B;;AAAA;;AAAA;AAAgC;AAAhC;;AAAA;AAAgC;AAAhC;;AAAA;;AAAA;AAAA;;AAAA;;AAAA;AAIK;;AACA;;;;;AAFN;;;;;;;AAFA;;;;;;;;;;AAHI;;;;AAQT;;;AARS;;;AAvBP;AAAA;AAAA;;;AAAA;;AAAA;AACI;;AAAA;AAEE;;AAAA;AACE;;AAAA;AACkB;;AANd;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AArB6C;AAAA;;AAAA;AA+BpE;AAAA;;AAAA;AAAA;AAEA;AAwCF;;;AAGS;;AAAA;AA5E6D;AAAA;AAAA;AA4E3B;AAAA;AAAA;;AAAzC;AACmD;AAAA;AAAA;AAGpC;;AAAA;;AAA2C;;AAAd;;AAAc;AAAhC;;AAAA;AAAnB;;AAAA;AAAP;AAEe;;AAAA;;AAAoB;;AAA5B;AAAP;AAEe;;AAAA;;AAAe;;AAAvB;AAAP;AAE0C;;AAAhB;;AAAgB;AAAnC;;AAAA;;AAAA;AAAP;AAGM;;AAAuB;;AAAgB;AAoB7C;AAGuB;;;;;;;;;;AAHvB;;;;AAKS;;;AALT;AAhB+C;;AAAA;;;AAkC/C;;;;;;AAAA;;;AAIS;;;AAJT;AA/BuC;;AAAA;AAiDkB;;AAAA;AAAA;AAGtC;AAAA;AAFsB;;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;;AAAA;AAAA;;AAAA;;;AAAA;;AAAA;;;AAAA;;AAAA;;;AAAA;;AAAA;;;AAAnB;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAKtB;;AAAA;;AAAA;AArDO;AAAP;AA8DF;;;AAES;;AAAA;AAlK6D;AAAA;AAAA;AAkK3B;AAAA;AAAA;;AAAzC;AAEyC;AAAA;AAAzC",
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;AAoDA;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;AAAA;;AAoKG;;AAAA;AAAA;AAAA;;AAAA;AApKH;;;AAAA;AAoKG;;;AAAA;AAAA;AAAA;AAAA;AAAA;;AAvFA;;AAAA;AAAA;AAAA;;AAAA;AA7EH;;;AAAA;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AA6EG;;;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AA1DA;;AAAA;AAAA;AAAA;;AAAA;AAnBH;;;AAAA;;;AAAA;;;AAAA;AAAA;;;AAAA;AAmBG;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAnBH;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAmBE;;;AA8BoB;AAEH;;AAAA;AAA6B;AAA7B;;AAAA;AAA6B;AAA7B;;AAAA;;AAAA;AAAgC;AAAhC;;AAAA;AAAgC;AAAhC;;AAAA;;AAAA;AAAA;;AAAA;;AAAA;AAIK;;AACA;;;;;AAFN;;;;;;;AAFA;;;;;;;;;;AAHI;;;;AAQT;;;AARS;;;AAvBP;AAAA;AAAA;;;AAAA;;AAAA;AACI;;AAAA;AAEE;;AAAA;AACE;;AAAA;AACkB;;AANd;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AArB6C;AAAA;;AAAA;AA+BpE;AAAA;;AAAA;AAAA;AAEA;AAwCF;;;AAGS;;AAAA;AA5E6D;AAAA;AAAA;AA4E3B;AAAA;AAAA;;AAAzC;AACmD;AAAA;AAAA;AAGpC;;AAAA;;AAA2C;;AAAd;;AAAc;AAAhC;;AAAA;AAAnB;;AAAA;AAAP;AAEe;;AAAA;;AAAoB;;AAA5B;AAAP;AAEe;;AAAA;;AAAe;;AAAvB;AAAP;AAE0C;;AAAhB;;AAAgB;AAAnC;;AAAA;;AAAA;AAAP;AAGM;;AAAuB;;AAAgB;AACd;;AAmB/B;;;;;;;;;AAAA;;;;AAKS;;;AALT;AAhB+C;;AAAA;;;AAkC/C;;;;;;AAAA;;;AAIS;;;AAJT;AA/BuC;;AAAA;AAiDkB;;AAAA;AAAA;AAGtC;AAAA;AAFsB;;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;;AAAA;AAAA;;AAAA;;;AAAA;;AAAA;;;AAAA;;AAAA;;;AAAA;;AAAA;;;AAAnB;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAKtB;;AAAA;;AAAA;AArDO;AAAP;AA8DF;;;AAES;;AAAA;AAlK6D;AAAA;AAAA;AAkK3B;AAAA;AAAA;;AAAzC;AAEyC;AAAA;AAAzC",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -2044,15 +2044,12 @@
       ]
     },
     "343": {
-      "op": "itxn_begin"
-    },
-    "344": {
       "op": "txn Sender",
       "defined_out": [
         "amount#0",
         "asset#0",
-        "inner_txn_params%0%%param_AssetReceiver_idx_0#0",
         "property#0",
+        "receiver#0",
         "tmp%1#0",
         "tmp%16#0"
       ],
@@ -2062,8 +2059,11 @@
         "amount#0",
         "tmp%16#0",
         "asset#0",
-        "inner_txn_params%0%%param_AssetReceiver_idx_0#0"
+        "receiver#0"
       ]
+    },
+    "345": {
+      "op": "itxn_begin"
     },
     "346": {
       "op": "frame_dig -2",
@@ -2073,7 +2073,7 @@
         "amount#0",
         "tmp%16#0",
         "asset#0",
-        "inner_txn_params%0%%param_AssetReceiver_idx_0#0",
+        "receiver#0",
         "shares#0 (copy)"
       ]
     },
@@ -2085,7 +2085,7 @@
         "amount#0",
         "tmp%16#0",
         "asset#0",
-        "inner_txn_params%0%%param_AssetReceiver_idx_0#0"
+        "receiver#0"
       ]
     },
     "350": {

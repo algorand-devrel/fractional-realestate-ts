@@ -166,7 +166,7 @@ export default class FractionalRealEstate extends Contract {
     itxn
       .assetTransfer({
         xferAsset: asset,
-        assetReceiver: Txn.sender, // Buyer
+        assetReceiver: receiver, // Buyer
         assetAmount: shares,
         fee: 0,
       })

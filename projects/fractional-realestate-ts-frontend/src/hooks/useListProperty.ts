@@ -17,8 +17,9 @@ export function useListProperty(appClient: FractionalRealEstateClient | null, ac
    * @param propertyAddress The address or name of the property
    * @param shares The total number of shares
    * @param pricePerShare The price per share in microAlgos
+   * @param onTx (optional) callback to receive the transaction ID
    */
-  const listProperty = async (propertyAddress: string, shares: string, pricePerShare: string) => {
+  const listProperty = async (propertyAddress: string, shares: string, pricePerShare: string, onTx?: (txId?: string) => void) => {
     if (!appClient || !activeAddress) return
 
     setLoading(true)
@@ -36,8 +37,14 @@ export function useListProperty(appClient: FractionalRealEstateClient | null, ac
         extraFee: microAlgo(1000),
       })
       setSuccess(`Property listed! Asset ID: ${result.return}`)
+      if (onTx && result.txIds && result.txIds.length > 0) {
+        onTx(result.txIds[0])
+      } else if (onTx) {
+        onTx(undefined)
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to list property')
+      if (onTx) onTx(undefined)
     } finally {
       setLoading(false)
     }
