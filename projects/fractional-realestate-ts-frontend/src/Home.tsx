@@ -43,7 +43,7 @@ const Home: React.FC<HomeProps> = () => {
               href={`https://lora.algokit.io/localnet/transaction/${txId}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline text-blue-600"
+              className="underline text-blue-100"
             >
               {txId}
             </a>
@@ -65,7 +65,7 @@ const Home: React.FC<HomeProps> = () => {
               href={`https://lora.algokit.io/localnet/transaction/${txId}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline text-blue-600"
+              className="underline text-blue-100"
             >
               {txId}
             </a>
