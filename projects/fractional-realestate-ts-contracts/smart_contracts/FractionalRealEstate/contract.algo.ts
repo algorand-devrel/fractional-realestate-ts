@@ -15,7 +15,6 @@ import {
   Account,
   Contract,
   abimethod,
-  arc4,
   BoxMap,
   Global,
   Txn,
@@ -25,6 +24,7 @@ import {
   type uint64,
   gtxn,
   Bytes,
+  clone
 } from '@algorandfoundation/algorand-typescript'
 
 /**
@@ -41,14 +41,14 @@ import {
  * - propertyAssetId: The Algorand asset ID representing this property
  * - ownerAddress: The account address of the user who listed the property
  */
-class PropertyStruct extends arc4.Struct<{
-  address: arc4.Str
-  totalShares: arc4.UintN64
-  availableShares: arc4.UintN64
-  pricePerShare: arc4.UintN64
-  propertyAssetId: arc4.UintN64
-  ownerAddress: arc4.Address
-}> {}
+type PropertyStruct = {
+  address: string
+  totalShares: uint64
+  availableShares:uint64
+  pricePerShare: uint64
+  propertyAssetId: uint64
+  ownerAddress: Account
+}
 
 export default class FractionalRealEstate extends Contract {
   /**
@@ -75,17 +75,17 @@ export default class FractionalRealEstate extends Contract {
     const assetId = this.createPropertyAsset(propertyAddress, shares)
 
     // Create a struct with all property details
-    const propertyStruct = new PropertyStruct({
-      address: new arc4.Str(propertyAddress),
-      totalShares: new arc4.UintN64(shares),
-      availableShares: new arc4.UintN64(shares),
-      pricePerShare: new arc4.UintN64(pricePerShare),
-      propertyAssetId: new arc4.UintN64(assetId),
-      ownerAddress: new arc4.Address(Txn.sender),
-    })
+    const propertyStruct = {
+      address: propertyAddress,
+      totalShares: shares,
+      availableShares: shares,
+      pricePerShare: pricePerShare,
+      propertyAssetId:assetId,
+      ownerAddress: Txn.sender,
+    }
 
     // Store the property struct in the BoxMap, keyed by property asset ID
-    this.listedProperties(assetId).value = propertyStruct.copy()
+    this.listedProperties(assetId).value = clone(propertyStruct)
 
     return assetId
   }
@@ -131,26 +131,26 @@ export default class FractionalRealEstate extends Contract {
   public purchaseFromLister(propertyId: uint64, shares: uint64, payment: gtxn.PaymentTxn): boolean {
     // Ensure the property is listed
     assert(this.listedProperties(propertyId).exists, 'Property not listed')
-    const property = this.listedProperties(propertyId).value.copy()
+    const property = clone(this.listedProperties(propertyId).value)
 
     // Ensure the payment amount matches the total price for the requested shares
-    assert(payment.amount === shares * property.pricePerShare.native, 'Invalid payment amount')
+    assert(payment.amount === shares * property.pricePerShare, 'Invalid payment amount')
     // Ensure the payment is sent to the contract
     assert(payment.receiver === Global.currentApplicationAddress, 'Invalid payment receiver')
     // Ensure the payment is sent by the buyer
     assert(payment.sender === Txn.sender, 'Invalid payment sender')
     // Ensure the buyer has enough shares available
-    assert(shares <= property.availableShares.native, 'Not enough shares')
+    assert(shares <= property.availableShares, 'Not enough shares')
 
     // Transfer shares to the buyer
-    const asset = Asset(property.propertyAssetId.native)
+    const asset = Asset(property.propertyAssetId)
     this.transferSharesToBuyer(Txn.sender, asset, shares)
 
     // Pay the property owner
     this.payPropertyOwner(payment.amount, property.ownerAddress)
 
     // Update the available shares
-    this.updateAvailableShares(propertyId, property.availableShares.native - shares)
+    this.updateAvailableShares(propertyId, property.availableShares - shares)
 
     return true
   }
@@ -180,7 +180,7 @@ export default class FractionalRealEstate extends Contract {
    * @param amount The amount to pay (in microAlgos)
    * @param ownerAddress The address of the property owner
    */
-  private payPropertyOwner(amount: uint64, ownerAddress: arc4.Address) {
+  private payPropertyOwner(amount: uint64, ownerAddress: Account) {
     itxn
       .payment({
         amount,
@@ -199,13 +199,13 @@ export default class FractionalRealEstate extends Contract {
    */
   private updateAvailableShares(propertyId: uint64, newAvailableShares: uint64) {
     // The struct is copied to avoid mutating the original struct
-    const propertyStruct = this.listedProperties(propertyId).value.copy()
-    const updatedStruct = new PropertyStruct({
+    const propertyStruct = clone(this.listedProperties(propertyId).value)
+    const updatedStruct = {
       ...propertyStruct,
-      availableShares: new arc4.UintN64(newAvailableShares),
-    })
+      availableShares: newAvailableShares,
+    }
 
-    this.listedProperties(propertyId).value = updatedStruct.copy()
+    this.listedProperties(propertyId).value = clone(updatedStruct)
   }
 
   /**
