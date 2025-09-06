@@ -69,7 +69,7 @@ export default class FractionalRealEstate extends Contract {
    * @param pricePerShare Price per share in microAlgos (uint64)
    * @returns The asset ID of the created property token (uint64)
    */
-  @abimethod()
+  
   public createPropertyListing(propertyAddress: string, shares: uint64, pricePerShare: uint64): uint64 {
     // Create the property asset (Algorand Standard Asset, ASA) using an inner transaction
     const assetId = this.createPropertyAsset(propertyAddress, shares)
@@ -127,7 +127,7 @@ export default class FractionalRealEstate extends Contract {
    * @param payment The payment transaction (must be grouped with the app call)
    * @returns True if the purchase is successful
    */
-  @abimethod()
+  
   public purchaseFromLister(propertyId: uint64, shares: uint64, payment: gtxn.PaymentTxn): boolean {
     // Ensure the property is listed
     assert(this.listedProperties(propertyId).exists, 'Property not listed')
