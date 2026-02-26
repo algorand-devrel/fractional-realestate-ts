@@ -55,6 +55,43 @@ describe('FractionalRealEstate contract', () => {
     }
   }
 
+  /**
+   * Helper to create a property listing with the required MBR payment.
+   * Returns the property asset ID.
+   */
+  async function createListing(
+    client: Awaited<ReturnType<typeof deploy>>['client'],
+    algorand: AlgorandClient,
+    sender: Address,
+    propertyAddress: string,
+    shares: bigint,
+    pricePerShare: bigint,
+  ) {
+    // Create MBR payment to fund box storage costs
+    const mbrPayment = await algorand.createTransaction.payment({
+      sender,
+      amount: microAlgo(100_000),
+      receiver: client.appAddress,
+    })
+
+    const createResult = await client.send.createPropertyListing({
+      args: {
+        mbrPayment,
+        propertyAddress,
+        shares,
+        pricePerShare,
+      },
+      boxReferences: ['properties'],
+      extraFee: microAlgo(1000),
+    })
+
+    const propertyId = createResult.return
+    if (!propertyId) {
+      throw new Error('Failed to create property listing')
+    }
+    return propertyId
+  }
+
   test('can list a property and purchase shares', async () => {
     // --- SETUP ---
     // testAccount will act as the property lister/owner
@@ -70,22 +107,7 @@ describe('FractionalRealEstate contract', () => {
     const propertyAddress = '123 Main St'
     const totalShares = 100n
     const pricePerShare = 1_000_000n // 1 Algo per share
-    const createResult = await client.send.createPropertyListing({
-      args: {
-        propertyAddress,
-        shares: totalShares,
-        pricePerShare,
-      },
-      // BoxMap for listed properties uses the prefix 'properties', but asset ID is not known until after creation
-      boxReferences: ['properties'], // Only the prefix is needed for creation
-      extraFee: microAlgo(1000), // Pay for the inner transaction which creates the property asset
-    })
-
-    const propertyId = createResult.return
-
-    if (!propertyId) {
-      throw new Error('Failed to create property listing')
-    }
+    const propertyId = await createListing(client, localnet.algorand, lister, propertyAddress, totalShares, pricePerShare)
 
     // --- PURCHASING SHARES ---
     // The buyer must opt in to the asset before they can receive shares
@@ -141,5 +163,125 @@ describe('FractionalRealEstate contract', () => {
     expect(listedProperties[0][1].ownerAddress).toBe(lister.toString())
     expect(listedProperties[0][1].pricePerShare).toBe(pricePerShare)
     expect(listedProperties[0][1].address).toBe(propertyAddress)
+  })
+
+  test('rejects listing with zero shares', async () => {
+    const { testAccount } = localnet.context
+    const { client } = await deploy(testAccount)
+
+    await expect(
+      createListing(client, localnet.algorand, testAccount, '456 Oak Ave', 0n, 1_000_000n),
+    ).rejects.toThrow()
+  })
+
+  test('rejects listing with zero price per share', async () => {
+    const { testAccount } = localnet.context
+    const { client } = await deploy(testAccount)
+
+    await expect(
+      createListing(client, localnet.algorand, testAccount, '456 Oak Ave', 100n, 0n),
+    ).rejects.toThrow()
+  })
+
+  test('rejects purchase of zero shares', async () => {
+    const { testAccount, generateAccount } = localnet.context
+    const buyer = (await generateAccount({ initialFunds: algo(1000000) })).addr
+    const { client } = await deploy(testAccount)
+
+    const propertyId = await createListing(client, localnet.algorand, testAccount, '789 Elm St', 100n, 1_000_000n)
+
+    await ensureOptedInToAsset(localnet.algorand, buyer, propertyId)
+
+    // Try to purchase 0 shares with a 0 payment
+    const paymentTransaction = await localnet.algorand.createTransaction.payment({
+      sender: buyer,
+      amount: microAlgo(0n),
+      receiver: client.appAddress,
+    })
+
+    await expect(
+      client
+        .newGroup()
+        .purchaseFromLister({
+          sender: buyer,
+          args: { propertyId, shares: 0n, payment: paymentTransaction },
+          boxReferences: [createBoxReference(client.appId, 'properties', propertyId)],
+          accountReferences: [buyer, testAccount],
+          assetReferences: [propertyId],
+          extraFee: microAlgo(2000),
+        })
+        .send(),
+    ).rejects.toThrow()
+  })
+
+  test('owner can delist a property with no sold shares', async () => {
+    const { testAccount } = localnet.context
+    const { client } = await deploy(testAccount)
+
+    const propertyId = await createListing(client, localnet.algorand, testAccount, '100 Delist Dr', 50n, 500_000n)
+
+    // Delist the property
+    await client.send.delistProperty({
+      args: { propertyId },
+      boxReferences: [createBoxReference(client.appId, 'properties', propertyId)],
+    })
+
+    // Verify the property no longer exists
+    await expect(client.getPropertyInfo({ args: { propertyId } })).rejects.toThrow()
+  })
+
+  test('non-owner cannot delist a property', async () => {
+    const { testAccount, generateAccount } = localnet.context
+    const nonOwner = (await generateAccount({ initialFunds: algo(10) })).addr
+    const { client } = await deploy(testAccount)
+
+    const propertyId = await createListing(client, localnet.algorand, testAccount, '200 Owner St', 50n, 500_000n)
+
+    // Non-owner tries to delist
+    await expect(
+      client.send.delistProperty({
+        sender: nonOwner,
+        args: { propertyId },
+        boxReferences: [createBoxReference(client.appId, 'properties', propertyId)],
+      }),
+    ).rejects.toThrow()
+  })
+
+  test('cannot delist a property with sold shares', async () => {
+    const { testAccount, generateAccount } = localnet.context
+    const buyer = (await generateAccount({ initialFunds: algo(1000000) })).addr
+    const { client } = await deploy(testAccount)
+
+    const pricePerShare = 1_000_000n
+    const propertyId = await createListing(client, localnet.algorand, testAccount, '300 Sold Ln', 100n, pricePerShare)
+
+    // Buy some shares first
+    await ensureOptedInToAsset(localnet.algorand, buyer, propertyId)
+    const sharesToBuy = 5n
+    const paymentTransaction = await localnet.algorand.createTransaction.payment({
+      sender: buyer,
+      amount: microAlgo(sharesToBuy * pricePerShare),
+      receiver: client.appAddress,
+    })
+
+    await client
+      .newGroup()
+      .purchaseFromLister({
+        sender: buyer,
+        args: { propertyId, shares: sharesToBuy, payment: paymentTransaction },
+        boxReferences: [createBoxReference(client.appId, 'properties', propertyId)],
+        accountReferences: [buyer, testAccount],
+        assetReferences: [propertyId],
+        extraFee: microAlgo(2000),
+      })
+      .send()
+
+    // Owner tries to delist after shares are sold — should fail
+    await expect(
+      client.send.delistProperty({
+        args: { propertyId },
+        boxReferences: [createBoxReference(client.appId, 'properties', propertyId)],
+      }),
+    ).rejects.toThrow()
   })
 })

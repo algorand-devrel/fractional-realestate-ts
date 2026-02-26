@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FractionalRealEstateClient } from '../contracts/FractionalRealestate'
+import { FractionalRealEstateClient } from '../contracts/FractionalRealEstate'
 import { microAlgo } from '@algorandfoundation/algokit-utils'
 
 /**

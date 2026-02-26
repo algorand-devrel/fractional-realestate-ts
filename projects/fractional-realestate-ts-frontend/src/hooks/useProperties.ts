@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { FractionalRealEstateClient } from '../contracts/FractionalRealestate'
+import { FractionalRealEstateClient } from '../contracts/FractionalRealEstate'
 
 // Property type for listed properties
 export type Property = {

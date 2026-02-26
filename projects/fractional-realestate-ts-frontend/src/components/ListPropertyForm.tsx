@@ -42,7 +42,7 @@ const ListPropertyForm: React.FC<ListPropertyFormProps> = ({
         </label>
         <input
           id="property-address"
-          className="input input-bordered w-full"
+          className="input w-full"
           type="text"
           placeholder="e.g. 123 Main St, Springfield"
           value={propertyAddress}
@@ -58,7 +58,7 @@ const ListPropertyForm: React.FC<ListPropertyFormProps> = ({
         </label>
         <input
           id="total-shares"
-          className="input input-bordered w-full"
+          className="input w-full"
           type="number"
           placeholder="e.g. 100"
           value={shares}
@@ -75,7 +75,7 @@ const ListPropertyForm: React.FC<ListPropertyFormProps> = ({
         </label>
         <input
           id="price-per-share"
-          className="input input-bordered w-full"
+          className="input w-full"
           type="number"
           placeholder="e.g. 1000000 (1 Algo)"
           value={pricePerShare}

@@ -18,6 +18,11 @@ interface PropertyGridProps {
   buyError: string | null
   buySuccess: string | null
   handleBuyShares: (propertyId: bigint, pricePerShare: bigint, ownerAddress: string, buyAmount: string) => void
+  delistingPropertyId: bigint | null
+  delistLoading: boolean
+  delistError: string | null
+  delistSuccess: string | null
+  handleDelistProperty: (propertyId: bigint) => void
 }
 
 const PropertyGrid: React.FC<PropertyGridProps> = ({
@@ -28,6 +33,11 @@ const PropertyGrid: React.FC<PropertyGridProps> = ({
   buyError,
   buySuccess,
   handleBuyShares,
+  delistingPropertyId,
+  delistLoading,
+  delistError,
+  delistSuccess,
+  handleDelistProperty,
 }) => (
   <ul role="list" className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-3 xl:gap-x-8">
     {properties.map(([propertyId, property]) => (
@@ -41,6 +51,11 @@ const PropertyGrid: React.FC<PropertyGridProps> = ({
         buyError={buyError}
         buySuccess={buySuccess}
         handleBuyShares={handleBuyShares}
+        delistingPropertyId={delistingPropertyId}
+        delistLoading={delistLoading}
+        delistError={delistError}
+        delistSuccess={delistSuccess}
+        handleDelistProperty={handleDelistProperty}
       />
     ))}
   </ul>

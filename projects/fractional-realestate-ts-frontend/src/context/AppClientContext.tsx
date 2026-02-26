@@ -4,7 +4,7 @@
 
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react'
 // These imports allow us to interact with the FractionalRealEstate smart contract on the Algorand blockchain
-import { FractionalRealEstateFactory, FractionalRealEstateClient } from '../contracts/FractionalRealestate'
+import { FractionalRealEstateFactory, FractionalRealEstateClient } from '../contracts/FractionalRealEstate'
 // This utility helps us connect to the Algorand blockchain network
 import { AlgorandClient } from '@algorandfoundation/algokit-utils'
 // useWallet is a React hook that lets us connect to the user's Algorand wallet (like Pera or Lute)

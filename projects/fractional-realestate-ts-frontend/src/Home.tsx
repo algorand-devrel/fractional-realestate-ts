@@ -9,12 +9,11 @@ import { useAppClient } from './context/AppClientContext'
 import { useBuyShares } from './hooks/useBuyShares'
 import { useListProperty } from './hooks/useListProperty'
 import { useOwnedProperties } from './hooks/useOwnedProperties'
+import { useDelistProperty } from './hooks/useDelistProperty'
 import { useProperties } from './hooks/useProperties'
 import { useSnackbar } from 'notistack'
 
-interface HomeProps {}
-
-const Home: React.FC<HomeProps> = () => {
+const Home: React.FC = () => {
   // --- Hooks for Algorand contract and wallet ---
   const { appClient } = useAppClient()
   const { activeAddress } = useWallet()
@@ -24,13 +23,20 @@ const Home: React.FC<HomeProps> = () => {
   const { properties, loading: propertiesLoading, error: propertiesError, refresh: refreshProperties } = useProperties(appClient)
   const { listProperty, loading: listingLoading, error: listingError, success: listingSuccess } = useListProperty(appClient, activeAddress)
   const { buyShares, loading: buyLoading, error: buyError, success: buySuccess, buyingPropertyId } = useBuyShares(appClient, activeAddress)
+  const {
+    delistProperty,
+    loading: delistLoading,
+    error: delistError,
+    success: delistSuccess,
+    delistingPropertyId,
+  } = useDelistProperty(appClient, activeAddress)
   const { ownedProperties, loading: ownedLoading, error: ownedError, refresh: refreshOwned } = useOwnedProperties(appClient, activeAddress)
 
   // --- Refresh properties when a property is listed or shares are bought ---
   useEffect(() => {
     refreshProperties()
     refreshOwned()
-  }, [appClient, listingSuccess, buySuccess, activeAddress, refreshProperties, refreshOwned])
+  }, [appClient, listingSuccess, buySuccess, delistSuccess, activeAddress, refreshProperties, refreshOwned])
 
   // --- Handle property listing form submit ---
   const handleListProperty = async (propertyAddress: string, shares: string, pricePerShare: string) => {
@@ -39,6 +45,28 @@ const Home: React.FC<HomeProps> = () => {
         enqueueSnackbar(
           <span>
             Property listed! TX:{' '}
+            <a
+              href={`https://lora.algokit.io/localnet/transaction/${txId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-blue-100"
+            >
+              {txId}
+            </a>
+          </span>,
+          { variant: 'success' },
+        )
+      }
+    })
+  }
+
+  // --- Handle delist property callback ---
+  const handleDelistProperty = async (propertyId: bigint) => {
+    await delistProperty(propertyId, (txId?: string) => {
+      if (txId) {
+        enqueueSnackbar(
+          <span>
+            Property delisted! TX:{' '}
             <a
               href={`https://lora.algokit.io/localnet/transaction/${txId}`}
               target="_blank"
@@ -115,6 +143,11 @@ const Home: React.FC<HomeProps> = () => {
               buyError={buyError}
               buySuccess={buySuccess}
               handleBuyShares={handleBuyShares}
+              delistingPropertyId={delistingPropertyId}
+              delistLoading={delistLoading}
+              delistError={delistError}
+              delistSuccess={delistSuccess}
+              handleDelistProperty={handleDelistProperty}
             />
           )}
         </div>

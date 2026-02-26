@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FractionalRealEstateClient } from '../contracts/FractionalRealestate'
+import { FractionalRealEstateClient } from '../contracts/FractionalRealEstate'
 import { microAlgo } from '@algorandfoundation/algokit-utils'
 
 /**
@@ -27,8 +27,17 @@ export function useListProperty(appClient: FractionalRealEstateClient | null, ac
     setSuccess(null)
 
     try {
+      // Create an MBR payment transaction to fund the contract's box storage costs.
+      // MBR formula: 2500 + 400 * (boxNameLen + boxValueLen) microAlgos.
+      const mbrPayment = await appClient.algorand.createTransaction.payment({
+        sender: activeAddress,
+        amount: microAlgo(100_000), // Generous estimate to cover box MBR
+        receiver: appClient.appAddress,
+      })
+
       const result = await appClient.send.createPropertyListing({
         args: {
+          mbrPayment,
           propertyAddress,
           shares: BigInt(shares),
           pricePerShare: BigInt(pricePerShare),
