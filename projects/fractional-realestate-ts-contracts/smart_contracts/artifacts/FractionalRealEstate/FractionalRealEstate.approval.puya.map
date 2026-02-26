@@ -3,7 +3,7 @@
   "sources": [
     "../../FractionalRealEstate/contract.algo.ts"
   ],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAyBA;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AASE;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAME;;AAAA;AACA;AAUmD;;AAAA;AAAV;;AAAA;;AAAA;AAAP;;;AAAA;AAAP;;;AAAA;AACpB;;AAAA;;AAAA;AAAP;AACO;;AAAA;;AAAwB;;AAAxB;AAAP;AACO;;AAAA;;AAAsB;;AAAtB;AAAP;AAoBkB;AAE0B;AAA7B;;AAAA;AAA6B;AAA7B;;AAAA;;AAAA;AAAgC;AAAhC;;AAAA;AAAgC;AAAhC;;AAAA;;AAAA;AAAA;;AAAA;;AAAA;AAIF;;AACA;;;;;AAFC;;;;;;;AAFA;;;;;;;;;;AAHI;;;;AAQT;;;AARS;;;AAXC;AACc;;AANV;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAhCC;AAAA;;AAAA;AAyCxB;AAAA;;AAAA;AAAA;AAjCF;AAAA;AAAA;AAAA;AAAA;AAAA;AAuDA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AACE;;AAAA;AAC6B;;AAAA;AAjEL;AAAA;AAAA;AAiEjB;AAAA;AAAA;;AAAP;AAGO;;AAAA;;AAA4B;;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAT;;AAAA;AAAnB;;AAAA;AAAP;AACO;;AAAA;;AAAqB;;AAArB;AAAP;AACO;;AAAA;;AAAmB;;AAAnB;AAAP;AAEO;;AAAA;;AAA6B;;AAA7B;AAAP;AACO;;AAAA;;AAAoB;;AAApB;AAAP;AACiB;;AAAA;;AAAA;AAAA;AAAA;AAAV;;AAAA;;AAAA;AAAP;AAGoB;;AAAA;;AAAA;AAAA;AAAA;AAAA;AACpB;AAGmB;;;;;;;;;;AAFjB;;;;AAIO;;;AAEP;AAEY;;AAAA;;AAAA;AAAA;;;;;;;;AAFZ;;;AAGO;;;AAVT;AAcuC;;AAAA;;AAAA;AAqBV;;AAAA;AAAA;AAE3B;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;;AAAA;AAAA;AACiB;;AAAA;AAFG;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAKtB;;AAAA;;AAAA;AAxDF;;;;;;;AAAA;AAAA;AAAA;AAoCA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAC+B;AApGL;AAAA;AAAA;AAoGjB;AAAA;AAAA;;AAAP;AAEO;;AADgB;;AAAA;;AAAA;AAAA;AAChB;AAAP;AAEE;AAAA;;AAAA;AAAA;AAAA;AAAwC;;AAAA;;AAAA;AAAA;AAAA;AAAxC;AADF;AAIA;;AARF;AAAA;AAuBC;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAE8B;AA5HL;AAAA;AAAA;AA4HjB;AAAA;AAAA;;AAAP;AACO;AAAA;AAHR;AAAA;AAAA;AAAA;AAAA;AAAA",
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AA0BA;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AASE;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAME;;AAAA;AACA;AAUmD;;AAAA;AAAV;;AAAA;;AAAA;AAAP;;;AAAA;AAAP;;;AAAA;AACpB;;AAAA;;AAAA;AAAP;AACO;;AAAA;;AAAwB;;AAAxB;AAAP;AACO;;AAAA;;AAAsB;;AAAtB;AAAP;AAoBkB;AAE0B;AAA7B;;AAAA;AAA6B;AAA7B;;AAAA;;AAAA;AAAgC;AAAhC;;AAAA;AAAgC;AAAhC;;AAAA;;AAAA;AAAA;;AAAA;;AAAA;AAIF;;AACA;;;;;AAFC;;;;;;;AAFA;;;;;;;;;;AAHI;;;;AAQT;;;AARS;;;AAXC;AACc;;AANV;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAhCC;AAAA;;AAAA;AAyCxB;AAAA;;AAAA;AAAA;AAjCF;AAAA;AAAA;AAAA;AAAA;AAAA;AAwDA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AACE;;AAAA;AAC6B;;AAAA;AAlEL;AAAA;AAAA;AAkEjB;AAAA;AAAA;;AAAP;AAIA;;AAAA;;AACmB;;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAT;;AAAA;AADV;;AAAA;AAAA;;AAAA;;AAEY;;AAFZ;AAAA;AAAA;;AAAA;;AAGU;;AAHV;AAAA;AAAA;;AAAA;;AAIoB;;AAJpB;AAAA;AAAA;;AAAA;;AAKW;;AALX;AAAA;AAAA;AAOiB;;AAAA;;AAAA;AAAA;AAAA;AAAV;;AAAA;;AAAA;AAAP;AAGoB;;AAAA;;AAAA;AAAA;AAAA;AAAA;AACpB;AAGmB;;;;;;;;;;AAFjB;;;;AAIO;;;AAEP;AAEY;;AAAA;;AAAA;AAAA;;;;;;;;AAFZ;;;AAGO;;;AAVT;AAcuC;;AAAA;;AAAA;AAwBV;;AAAA;AAAA;AAE3B;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;;AAAA;AAAA;AACiB;;AAAA;AAFG;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAKtB;;AAAA;;AAAA;AA7DF;;;;;;;AAAA;AAAA;AAAA;AAsCA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAC+B;AAvGL;AAAA;AAAA;AAuGjB;AAAA;AAAA;;AAAP;AAIO;;AAAe;;AAAA;;AAAA;AAAA;AAAf;AAAP;AAEE;AAAA;;AAAA;AAAA;AAAA;AAAwC;;AAAA;;AAAA;AAAA;AAAA;AAAxC;AADF;AAKA;;AAXF;AAAA;AA0BC;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAE8B;AAlIL;AAAA;AAAA;AAkIjB;AAAA;AAAA;;AAAP;AACO;AAAA;AAHR;AAAA;AAAA;AAAA;AAAA;AAAA",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -2579,28 +2579,18 @@
       ]
     },
     "332": {
-      "error": "Invalid payment amount",
-      "op": "assert // Invalid payment amount",
-      "stack_out": [
-        "shares#0",
-        "payment#0",
-        "box_prefixed_key%0#0",
-        "tmp%1#1",
-        "box%box_extract%0#0"
-      ]
-    },
-    "333": {
-      "op": "dig 3",
+      "op": "dig 4",
       "stack_out": [
         "shares#0",
         "payment#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
+        "tmp%4#1",
         "payment#0 (copy)"
       ]
     },
-    "335": {
+    "334": {
       "op": "gtxns Receiver",
       "defined_out": [
         "box%box_extract%0#0",
@@ -2608,6 +2598,7 @@
         "payment#0",
         "shares#0",
         "tmp%1#1",
+        "tmp%4#1",
         "tmp%5#1"
       ],
       "stack_out": [
@@ -2616,10 +2607,11 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
+        "tmp%4#1",
         "tmp%5#1"
       ]
     },
-    "337": {
+    "336": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "box%box_extract%0#0",
@@ -2627,6 +2619,7 @@
         "payment#0",
         "shares#0",
         "tmp%1#1",
+        "tmp%4#1",
         "tmp%5#1",
         "tmp%6#1"
       ],
@@ -2636,11 +2629,12 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
+        "tmp%4#1",
         "tmp%5#1",
         "tmp%6#1"
       ]
     },
-    "339": {
+    "338": {
       "op": "==",
       "defined_out": [
         "box%box_extract%0#0",
@@ -2648,6 +2642,7 @@
         "payment#0",
         "shares#0",
         "tmp%1#1",
+        "tmp%4#1",
         "tmp%7#1"
       ],
       "stack_out": [
@@ -2656,32 +2651,42 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
+        "tmp%4#1",
         "tmp%7#1"
       ]
     },
-    "340": {
-      "error": "Invalid payment receiver",
-      "op": "assert // Invalid payment receiver",
-      "stack_out": [
-        "shares#0",
-        "payment#0",
+    "339": {
+      "op": "&&",
+      "defined_out": [
+        "box%box_extract%0#0",
         "box_prefixed_key%0#0",
+        "payment#0",
+        "shares#0",
         "tmp%1#1",
-        "box%box_extract%0#0"
-      ]
-    },
-    "341": {
-      "op": "dig 3",
+        "tmp%8#0"
+      ],
       "stack_out": [
         "shares#0",
         "payment#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
+        "tmp%8#0"
+      ]
+    },
+    "340": {
+      "op": "dig 4",
+      "stack_out": [
+        "shares#0",
+        "payment#0",
+        "box_prefixed_key%0#0",
+        "tmp%1#1",
+        "box%box_extract%0#0",
+        "tmp%8#0",
         "payment#0 (copy)"
       ]
     },
-    "343": {
+    "342": {
       "op": "gtxns Sender",
       "defined_out": [
         "box%box_extract%0#0",
@@ -2689,7 +2694,8 @@
         "payment#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%8#0"
+        "tmp%8#0",
+        "tmp%9#0"
       ],
       "stack_out": [
         "shares#0",
@@ -2697,10 +2703,11 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%8#0"
+        "tmp%8#0",
+        "tmp%9#0"
       ]
     },
-    "345": {
+    "344": {
       "op": "txn Sender",
       "defined_out": [
         "box%box_extract%0#0",
@@ -2708,6 +2715,7 @@
         "payment#0",
         "shares#0",
         "tmp%1#1",
+        "tmp%10#0",
         "tmp%8#0",
         "tmp%9#0"
       ],
@@ -2718,10 +2726,11 @@
         "tmp%1#1",
         "box%box_extract%0#0",
         "tmp%8#0",
-        "tmp%9#0"
+        "tmp%9#0",
+        "tmp%10#0"
       ]
     },
-    "347": {
+    "346": {
       "op": "==",
       "defined_out": [
         "box%box_extract%0#0",
@@ -2729,7 +2738,8 @@
         "payment#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%10#0"
+        "tmp%11#0",
+        "tmp%8#0"
       ],
       "stack_out": [
         "shares#0",
@@ -2737,32 +2747,42 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%10#0"
+        "tmp%8#0",
+        "tmp%11#0"
       ]
     },
-    "348": {
-      "error": "Invalid payment sender",
-      "op": "assert // Invalid payment sender",
-      "stack_out": [
-        "shares#0",
-        "payment#0",
+    "347": {
+      "op": "&&",
+      "defined_out": [
+        "box%box_extract%0#0",
         "box_prefixed_key%0#0",
+        "payment#0",
+        "shares#0",
         "tmp%1#1",
-        "box%box_extract%0#0"
-      ]
-    },
-    "349": {
-      "op": "dig 3",
+        "tmp%12#0"
+      ],
       "stack_out": [
         "shares#0",
         "payment#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
+        "tmp%12#0"
+      ]
+    },
+    "348": {
+      "op": "dig 4",
+      "stack_out": [
+        "shares#0",
+        "payment#0",
+        "box_prefixed_key%0#0",
+        "tmp%1#1",
+        "box%box_extract%0#0",
+        "tmp%12#0",
         "payment#0 (copy)"
       ]
     },
-    "351": {
+    "350": {
       "op": "gtxns CloseRemainderTo",
       "defined_out": [
         "box%box_extract%0#0",
@@ -2770,7 +2790,8 @@
         "payment#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%11#0"
+        "tmp%12#0",
+        "tmp%13#0"
       ],
       "stack_out": [
         "shares#0",
@@ -2778,10 +2799,11 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%11#0"
+        "tmp%12#0",
+        "tmp%13#0"
       ]
     },
-    "353": {
+    "352": {
       "op": "global ZeroAddress",
       "defined_out": [
         "box%box_extract%0#0",
@@ -2789,8 +2811,9 @@
         "payment#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%11#0",
-        "tmp%12#0"
+        "tmp%12#0",
+        "tmp%13#0",
+        "tmp%14#0"
       ],
       "stack_out": [
         "shares#0",
@@ -2798,11 +2821,12 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%11#0",
-        "tmp%12#0"
+        "tmp%12#0",
+        "tmp%13#0",
+        "tmp%14#0"
       ]
     },
-    "355": {
+    "354": {
       "op": "==",
       "defined_out": [
         "box%box_extract%0#0",
@@ -2810,7 +2834,8 @@
         "payment#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%13#0"
+        "tmp%12#0",
+        "tmp%15#0"
       ],
       "stack_out": [
         "shares#0",
@@ -2818,86 +2843,119 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%13#0"
+        "tmp%12#0",
+        "tmp%15#0"
       ]
     },
-    "356": {
-      "error": "Close remainder to must be zero address",
-      "op": "assert // Close remainder to must be zero address",
+    "355": {
+      "op": "&&",
+      "defined_out": [
+        "box%box_extract%0#0",
+        "box_prefixed_key%0#0",
+        "payment#0",
+        "shares#0",
+        "tmp%1#1",
+        "tmp%16#0"
+      ],
       "stack_out": [
         "shares#0",
         "payment#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
-        "box%box_extract%0#0"
+        "box%box_extract%0#0",
+        "tmp%16#0"
       ]
     },
-    "357": {
-      "op": "uncover 3",
+    "356": {
+      "op": "uncover 4",
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
+        "tmp%16#0",
         "payment#0"
       ]
     },
-    "359": {
+    "358": {
       "op": "gtxns RekeyTo",
       "defined_out": [
         "box%box_extract%0#0",
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%14#0"
+        "tmp%16#0",
+        "tmp%17#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%14#0"
+        "tmp%16#0",
+        "tmp%17#0"
       ]
     },
-    "361": {
+    "360": {
       "op": "global ZeroAddress",
       "defined_out": [
         "box%box_extract%0#0",
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%14#0",
-        "tmp%15#0"
+        "tmp%16#0",
+        "tmp%17#0",
+        "tmp%18#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%14#0",
-        "tmp%15#0"
+        "tmp%16#0",
+        "tmp%17#0",
+        "tmp%18#0"
       ]
     },
-    "363": {
+    "362": {
       "op": "==",
       "defined_out": [
         "box%box_extract%0#0",
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%16#0"
+        "tmp%16#0",
+        "tmp%19#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%16#0"
+        "tmp%16#0",
+        "tmp%19#0"
+      ]
+    },
+    "363": {
+      "op": "&&",
+      "defined_out": [
+        "box%box_extract%0#0",
+        "box_prefixed_key%0#0",
+        "shares#0",
+        "tmp%1#1",
+        "tmp%20#0"
+      ],
+      "stack_out": [
+        "shares#0",
+        "box_prefixed_key%0#0",
+        "tmp%1#1",
+        "box%box_extract%0#0",
+        "tmp%20#0"
       ]
     },
     "364": {
-      "error": "Rekey to must be zero address",
-      "op": "assert // Rekey to must be zero address",
+      "error": "Invalid payment transaction",
+      "op": "assert // Invalid payment transaction",
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
@@ -2970,14 +3028,14 @@
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0"
+        "tmp%21#0"
       ]
     },
     "372": {
@@ -2987,7 +3045,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "shares#0 (copy)"
       ]
     },
@@ -2999,17 +3057,17 @@
         "shares#0",
         "shares#0 (copy)",
         "tmp%1#1",
-        "tmp%17#0",
-        "tmp%17#0 (copy)"
+        "tmp%21#0",
+        "tmp%21#0 (copy)"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "shares#0 (copy)",
-        "tmp%17#0 (copy)"
+        "tmp%21#0 (copy)"
       ]
     },
     "376": {
@@ -3019,16 +3077,16 @@
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0",
-        "tmp%18#0"
+        "tmp%21#0",
+        "tmp%22#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
-        "tmp%18#0"
+        "tmp%21#0",
+        "tmp%22#0"
       ]
     },
     "377": {
@@ -3039,7 +3097,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0"
+        "tmp%21#0"
       ]
     },
     "378": {
@@ -3049,7 +3107,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box_prefixed_key%0#0 (copy)"
       ]
     },
@@ -3062,14 +3120,14 @@
         "box_prefixed_key%0#0 (copy)",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box_prefixed_key%0#0 (copy)",
         "26"
       ]
@@ -3081,7 +3139,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box_prefixed_key%0#0 (copy)",
         "26",
         "8"
@@ -3095,14 +3153,14 @@
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0"
       ]
     },
@@ -3115,14 +3173,14 @@
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%2#0 (copy)"
       ]
@@ -3136,14 +3194,14 @@
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "asset#0"
       ]
@@ -3161,14 +3219,14 @@
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "asset#0",
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0"
@@ -3181,7 +3239,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "asset#0",
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0",
@@ -3195,7 +3253,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "asset#0",
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0"
@@ -3208,7 +3266,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "asset#0"
       ]
@@ -3220,7 +3278,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0"
       ]
     },
@@ -3233,14 +3291,14 @@
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "4"
       ]
@@ -3252,7 +3310,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0"
       ]
     },
@@ -3265,14 +3323,14 @@
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "0"
       ]
@@ -3284,7 +3342,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0"
       ]
     },
@@ -3298,7 +3356,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box_prefixed_key%0#0 (copy)"
       ]
@@ -3313,14 +3371,14 @@
         "box_prefixed_key%0#0 (copy)",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box_prefixed_key%0#0 (copy)",
         "34"
@@ -3337,14 +3395,14 @@
         "box_prefixed_key%0#0 (copy)",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box_prefixed_key%0#0 (copy)",
         "34",
@@ -3360,14 +3418,14 @@
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0"
       ]
@@ -3382,14 +3440,14 @@
         "box_prefixed_key%0#0",
         "shares#0",
         "tmp%1#1",
-        "tmp%17#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "shares#0",
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0",
         "box%box_extract%3#0 (copy)"
@@ -3402,7 +3460,7 @@
         "box_prefixed_key%0#0",
         "tmp%1#1",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0"
       ]
@@ -3413,7 +3471,7 @@
         "shares#0",
         "box_prefixed_key%0#0",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0",
         "tmp%1#1"
@@ -3425,7 +3483,7 @@
         "shares#0",
         "box_prefixed_key%0#0",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0"
       ]
@@ -3436,7 +3494,7 @@
         "shares#0",
         "box_prefixed_key%0#0",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0",
         "1"
@@ -3448,7 +3506,7 @@
         "shares#0",
         "box_prefixed_key%0#0",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0"
       ]
@@ -3459,7 +3517,7 @@
         "shares#0",
         "box_prefixed_key%0#0",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0",
         "0"
@@ -3471,7 +3529,7 @@
         "shares#0",
         "box_prefixed_key%0#0",
         "box%box_extract%0#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0"
       ]
@@ -3487,7 +3545,7 @@
         "box%box_extract%0#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0",
-        "tmp%17#0"
+        "tmp%21#0"
       ]
     },
     "427": {
@@ -3497,7 +3555,7 @@
         "box%box_extract%0#0",
         "box%box_extract%2#0",
         "box%box_extract%3#0",
-        "tmp%17#0",
+        "tmp%21#0",
         "shares#0"
       ]
     },

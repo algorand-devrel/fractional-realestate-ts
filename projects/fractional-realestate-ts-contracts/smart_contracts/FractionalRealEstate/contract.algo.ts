@@ -84,6 +84,7 @@ export default class FractionalRealEstate extends Contract {
         fee: 0,
       })
       .submit()
+      
     return txnResult.createdAsset.id
   }
 
@@ -91,6 +92,7 @@ export default class FractionalRealEstate extends Contract {
   public purchaseFromLister(propertyId: uint64, shares: uint64, payment: gtxn.PaymentTxn): boolean {
     assert(shares > 0, 'Must purchase at least one share')
     assert(this.listedProperties(propertyId).exists, 'Property not listed')
+
     const property = clone(this.listedProperties(propertyId).value)
 
     assertMatch(payment, {
@@ -99,7 +101,7 @@ export default class FractionalRealEstate extends Contract {
       sender: Txn.sender,
       closeRemainderTo: Global.zeroAddress,
       rekeyTo: Global.zeroAddress,
-    })
+    }, 'Invalid payment transaction')
     assert(shares <= property.availableShares.asUint64(), 'Not enough shares')
 
     // Transfer shares and pay owner atomically
@@ -127,12 +129,15 @@ export default class FractionalRealEstate extends Contract {
    *  Deleting the box reclaims the MBR. */
   public delistProperty(propertyId: uint64): void {
     assert(this.listedProperties(propertyId).exists, 'Property not listed')
+
     const property = clone(this.listedProperties(propertyId).value)
+
     assert(Txn.sender === property.ownerAddress.native, 'Only the owner can delist')
     assert(
       property.availableShares.asUint64() === property.totalShares.asUint64(),
       'Cannot delist property with sold shares',
     )
+
     this.listedProperties(propertyId).delete()
   }
 
