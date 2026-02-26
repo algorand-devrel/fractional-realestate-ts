@@ -8,6 +8,7 @@ import {
   itxn,
   Asset,
   assert,
+  assertMatch,
   type uint64,
   gtxn,
   Bytes,
@@ -92,12 +93,13 @@ export default class FractionalRealEstate extends Contract {
     assert(this.listedProperties(propertyId).exists, 'Property not listed')
     const property = clone(this.listedProperties(propertyId).value)
 
-    assert(payment.amount === shares * property.pricePerShare.asUint64(), 'Invalid payment amount')
-    assert(payment.receiver === Global.currentApplicationAddress, 'Invalid payment receiver')
-    assert(payment.sender === Txn.sender, 'Invalid payment sender')
-    // Prevent malicious grouped transactions that close out or rekey the sender
-    assert(payment.closeRemainderTo === Global.zeroAddress, 'Close remainder to must be zero address')
-    assert(payment.rekeyTo === Global.zeroAddress, 'Rekey to must be zero address')
+    assertMatch(payment, {
+      amount: shares * property.pricePerShare.asUint64(),
+      receiver: Global.currentApplicationAddress,
+      sender: Txn.sender,
+      closeRemainderTo: Global.zeroAddress,
+      rekeyTo: Global.zeroAddress,
+    })
     assert(shares <= property.availableShares.asUint64(), 'Not enough shares')
 
     // Transfer shares and pay owner atomically
